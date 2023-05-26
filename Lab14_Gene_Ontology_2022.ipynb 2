@@ -1,0 +1,125 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Lab 14: Comparing Enrichment Analysis Tools\n",
+    "\n",
+    "**BACKGROUND:** TNFα is a cytokine involved in systemic inflammation whose primary role is in the regulation of immune cells. Dysregulation of TNFα has been implicated in a variety of diseases.\n",
+    "\n",
+    "**TASK:** Check a list of differentially expressed genes associated with TNFα for functional enrichment using online tools such as FuncAssociate, DAVID, GSEA|MSigDB, and String DB"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**TASK OBJECTIVES:**\n",
+    "\n",
+    "**A.** On Blackboard you will find a list of genes that are differentially expressed in human fibroblasts following stimulation for 2 hrs with TNFα. The file contains the list of genes in Entrez GeneID format.\n",
+    "\n",
+    "**B.** Open 4 browser windows so you can compare the results simultaneously:\n",
+    "\n",
+    " 1. FuncAssociate\n",
+    "   - Go to http://llama.mshri.on.ca/funcassociate/\n",
+    "   - Select **species**: Homo sapiens\n",
+    "   - Select **namespace**: entrezgene\n",
+    "   - Copy and paste gene list in \"**Query List**\"\n",
+    "   - Click \"**Functionate**\"\n",
+    " 2. DAVID\n",
+    "   - Go to https://david.ncifcrf.gov/ \n",
+    "   - Click \"**Functional Annotation**\" under the \"**Shortcuts to DAVID Tools**\" menu\n",
+    "   - Paste your gene list on the left\n",
+    "   - Select **identifier**: ENTREZ_GENE_ID\n",
+    "   - Select **list type**: Gene List\n",
+    "   - Click \"**Submit List**\"\n",
+    "   - Expand \"**Gene_Ontology**\" and click on \"**Chart**\" for the three selected categories\n",
+    " 3. GSEA MSigDB\n",
+    "   - Go to http://software.broadinstitute.org/gsea/msigdb\n",
+    "   - Click \"**Investigate gene sets**\" \n",
+    "   - Go through a short registration process\n",
+    "   - Paste your gene list into \"**Gene identifiers**\" text box\n",
+    "   - Select in \"**Computer Overalps**\": GO gene sets only\n",
+    "   - Click \"**compute overlaps**\"\n",
+    "   - Explore the table and gene set overlap matrix \n",
+    " 4. String DB\n",
+    "   - Go to https://string-db.org/\n",
+    "   - Click \"**Search**\" \n",
+    "   - Select \"**Multiple proteins**\" \n",
+    "   - Paste your gene list into \"**List Of Names:**\" text box\n",
+    "   - Choose 'Homo sapiens' and click  \"**Continue**\"\n",
+    "   - Once you get the network diagram, click \"**Analysis**\" button\n",
+    "   - Explore the functional enrichments in your network\n",
+    "\n",
+    "**C. **Explore!"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Answer the following questions:**\n",
+    ">Do you get the same results from different tools?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "Not exactly the same, but the GO results of different tools are similar, all suggesting that this set of genes may come from cells involved in the immune process or have an immune function."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    ">How about P-values? Are they comparable?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "P-values in all these tools are calculated based on Hypergeometric distribution of overlapping genes over all genes in the gene universe. Although STRING does not provide a p-value for each GO term, but it provides False Discovery Rate, which are p-values corrected for multiple testing within each category using the Benjamini–Hochberg procedure. \n",
+    "All the p-values are <0.05, which suggests all the gene enrichment results are siginificant."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    ">Why might you get slightly different results?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "First, the ontology and annotation are constantly evolving and different web tools may use different versions of gene term annotations and GO databases. In addition, different tools may use different algorithms, leading to different sensitivities."
+   ]
+  }
+ ],
+ "metadata": {
+  "anaconda-cloud": {},
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.13"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
